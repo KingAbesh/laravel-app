@@ -28,12 +28,8 @@ class ArticlesController extends Controller
     public function store()
     {
 
-        Article::create(request()->validate([
-            'title' => 'required',
-            'excerpt' => 'required',
-            'body' => 'required',
-        ]));
-        
+        Article::create($this->validateArticle());
+
         return redirect('/articles');
 
     }
@@ -45,22 +41,22 @@ class ArticlesController extends Controller
 
     public function update(Article $article)
     {
-        request()->validate([
-            'title' => 'required',
-            'excerpt' => 'required',
-            'body' => 'required',
-        ]);
 
-        $article->title = request('title');
-        $article->excerpt = request('excerpt');
-        $article->body = request('body');
-        $article->save();
+        $article->update($this->validateArticle());
 
-        return redirect('/articles/' . $article->id);
+        return redirect($article->path());
     }
 
     public function destroy()
     {
 
+    }
+
+    protected function validateArticle() {
+         return request()->validate([
+            'title' => 'required',
+            'excerpt' => 'required',
+            'body' => 'required',
+        ]);
     }
 }
