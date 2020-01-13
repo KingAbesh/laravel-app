@@ -15,4 +15,5 @@
             {{ $article->body }}
         </div>
     </div>
-</div> @endsection
+</div>
+@endsection
