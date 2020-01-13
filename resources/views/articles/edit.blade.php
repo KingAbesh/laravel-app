@@ -14,7 +14,11 @@
             <div class="field">
                 <label for="title" class="label">Title</label>
                 <div class="control">
-                    <input type="text" class="input" name="title" id="title" value="{{ $article->title }}">
+                    <input type="text" class="input @error('title) is-danger @enderror" name="title" id="title"
+                        value="{{ $article->title }}">
+                    @error('title')
+                    <p class="help is-danger">{{ $errors->first('title') }}</p>
+                    @enderror
                 </div>
             </div>
 
