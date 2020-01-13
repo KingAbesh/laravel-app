@@ -19,10 +19,10 @@ Released   : 20140225
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
         <link href="/css/default.css" rel="stylesheet" />
         <link href="/css/fonts.css" rel="stylesheet" />
 
+        @yield('head')
     </head>
 
     <body>

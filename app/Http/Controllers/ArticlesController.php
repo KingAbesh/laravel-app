@@ -21,23 +21,31 @@ class ArticlesController extends Controller
         return view('articles.show', ['article' => $article]);
     }
 
-    public function create() {
+    public function create()
+    {
         return view('articles.create');
     }
-    
-    public function store() {
-        
+
+    public function store()
+    {
+        dump(request()->all());
     }
 
-    public function edit() {
-        
+    public function edit($id)
+    {
+
+        $article = Article::find($id);
+
+        return view('articles.edit', ['articles' => $articles]);
     }
-    
-    public function update() {
-        
+
+    public function update()
+    {
+
     }
-    
-    public function destroy() {
-        
+
+    public function destroy()
+    {
+
     }
 }
