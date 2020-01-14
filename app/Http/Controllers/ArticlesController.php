@@ -29,14 +29,20 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        return view('articles.create');
+        return view('articles.create', [
+            'tags' => Tag::all()
+        ]);
     }
 
     public function store()
     {
 
-        Article::create($this->validateArticle());
-
+        $article = new Article($this->validateArticle());
+        $article->user_id = 1;
+        $article->save();
+        
+        $article->tags()->attach(request('tags'));
+        
         return redirect('/articles');
 
     }
