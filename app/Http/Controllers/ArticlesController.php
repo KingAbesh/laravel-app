@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-
 use App\Tag;
 
 class ArticlesController extends Controller
@@ -30,7 +29,7 @@ class ArticlesController extends Controller
     public function create()
     {
         return view('articles.create', [
-            'tags' => Tag::all()
+            'tags' => Tag::all(),
         ]);
     }
 
@@ -40,9 +39,9 @@ class ArticlesController extends Controller
         $article = new Article($this->validateArticle());
         $article->user_id = 1;
         $article->save();
-        
+
         $article->tags()->attach(request('tags'));
-        
+
         return redirect('/articles');
 
     }
@@ -71,7 +70,7 @@ class ArticlesController extends Controller
             'title' => 'required',
             'excerpt' => 'required',
             'body' => 'required',
-            'tags'=> 'exists:tags,id' 
+            'tags' => 'exists:tags,id',
         ]);
     }
 }
